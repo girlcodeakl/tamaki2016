@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="feed.html">Songs</a></li>
-  <li><a href="post.html">Post</a></li>
+<head>
+  <meta charset='utf-8'>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="feed.html">Songs</a></li>
+<li><a href="post.html">Post</a></li>
 </ul>
-      <form class="submit-form" method="post" action="/ideas">
-          <input class="ideaInput" type="text" name="idea" value="idea goes here">
-          <input type="submit" value="Submit">
-           <div class="note"></div>
-      </form>
-      <script>
-      var myCoolFunction = function (e) {
-        var data = {};
-        data.idea = $(".ideaInput").val();
-$.post( "/ideas" , data );
+  <form class="submit-form" method="post" action="/ideas">
+    <input class="ideaInput" type="text" name="idea" value="idea goes here">
+    <input class="imageInput" type="text" name="idea" value="picture">
+    <input type="submit" value="Submit">
+    <div class="note"></div>
+  </form>
+  <script>
+  var myCoolFunction = function (e) {
+    var data = {};
+    data.idea = $(".ideaInput").val();
+    data.image = $(".imageInput").val();
+    $.post( "/ideas" , data );
     e.preventDefault();
     $(".note").text("Thanks! Your idea was submitted");
-}
-      $(".submit-form").on("submit", myCoolFunction);
-      </script>
-  </body>
+  }
+  $(".submit-form").on("submit", myCoolFunction);
+  </script>
+</body>
 </html>

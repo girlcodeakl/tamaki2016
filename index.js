@@ -29,6 +29,7 @@ var saveNewIdea = function (request, response) {
   var idea = {};
   idea.text = request.body.idea;
   idea.image = request.body.image;
+  idea.music = request.body.music;
   posts.push(idea);
   response.send("thanks for your idea. Press back to add another");
 }

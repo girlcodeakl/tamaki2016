@@ -28,6 +28,7 @@ var saveNewIdea = function (request, response) {
   console.log(request.body.idea); //write it on the command prompt so we can see
   var idea = {};
   idea.text = request.body.idea;
+  idea.image = request.body.image;
   posts.push(idea);
   response.send("thanks for your idea. Press back to add another");
 }

@@ -2,6 +2,7 @@
 var express = require('express')
 var app = express();
 var bodyParser = require('body-parser')
+var database = null;
 
 //If a client asks for a file,
 //look in the public folder. If it's there, give it to them.
@@ -36,10 +37,27 @@ var saveNewIdea = function (request, response) {
   }
   idea.music = request.body.music;
   posts.push(idea);
-  response.send("thanks for your idea. Press back to add another");
+  response.send("thanks for your idea. Press back to add another")
+  var dbPosts = database.collection('posts');
+dbPosts.insert(idea);
 }
 app.post('/ideas', saveNewIdea);
 
 //listen for connections on port 3000
 app.listen(3000);
 console.log("I am listening... open a web browser and go to localhost:3000 to connect.");
+var mongodb = require('mongodb');
+var uri = 'mongodb://girlcode:17EppingStreet@ds041516.mlab.com:41516/keep-posts-forever';
+mongodb.MongoClient.connect(uri, function(err, newdb) {
+  if(err) throw err;
+  console.log("yay we connected to the database");
+  database = newdb;
+  var dbPosts = database.collection('posts');
+  dbPosts.find(function (err, cursor) {
+    cursor.each(function (err, item) {
+      if (item != null) {
+        posts.push(item);
+      }
+    });
+  });
+});

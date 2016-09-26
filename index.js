@@ -46,7 +46,7 @@ dbPosts.insert(idea);
 app.post('/ideas', saveNewIdea);
 
 //listen for connections on port 3000
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 console.log("I am listening... open a web browser and go to localhost:3000 to connect.");
 var mongodb = require('mongodb');
 var uri = 'mongodb://girlcode:17EppingStreet@ds041516.mlab.com:41516/keep-posts-forever';

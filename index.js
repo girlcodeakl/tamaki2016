@@ -15,7 +15,9 @@ app.use(bodyParser.json())
 //make an empty list of ideas
 var posts = [];
 var idea = {};
-idea.text = "Two cats who solve crimes in Dunedin";
+idea.text = "Into you";
+idea.image = "http://www.qqxxzx.com/images/cool-images/cool-images-7.jpg"
+idea.music = "https://www.youtube.com/watch?v=GVucWRs-eWA"
 posts.push(idea);
 
 //let a client GET the list of ideas
